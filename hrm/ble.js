@@ -4,55 +4,15 @@
 document.querySelector('#startNotifications').addEventListener('click', function(event) {
 	event.stopPropagation();
 	event.preventDefault();
-	if (isWebBluetoothEnabled()) {
-		ChromeSamples.clearLog();
-		onStartButtonClick();
-	}
+	clearLog();
+	onStartButtonClick();
 });
 
 document.querySelector('#stopNotifications').addEventListener('click', function(event) {
 	event.stopPropagation();
 	event.preventDefault();
-	if (isWebBluetoothEnabled()) {
-		onStopButtonClick();
-	}
+	onStopButtonClick();
 });
-
-function isWebBluetoothEnabled() {
-	if (navigator.bluetooth) {
-		return true;
-	} else {
-		log('Web Bluetooth API is not available.\n' + 'Please make sure the "Experimental Web Platform features" flag is enabled.');
-		return false;
-	}
-}
-var ChromeSamples = {
-	log: function() {
-		var line = Array.prototype.slice.call(arguments).map(function(argument) {
-			return typeof argument === 'string' ? argument : JSON.stringify(argument);
-		}).join(' ');
-
-		document.querySelector('#log').textContent += line + '\n';
-	},
-
-	clearLog: function() {
-		document.querySelector('#log').textContent = '';
-	},
-
-	setStatus: function(status) {
-		document.querySelector('#status').textContent = status;
-	},
-
-	setContent: function(newContent) {
-		var content = document.querySelector('#content');
-	  	while(content.hasChildNodes()) {
-	    	content.removeChild(content.lastChild);
-	  	}
-	  	content.appendChild(newContent);
-	}
-};
-
-const log = ChromeSamples.log;
 
 var myCharacteristic;
 function onStartButtonClick() {
@@ -102,12 +62,5 @@ function onStopButtonClick() {
 
 function handleNotifications(event) {
 	let value = event.target.value;
-	let a = [];
-	// Convert raw data bytes to hex values just for the sake of showing something.
-	// In the "real" world, you'd use data.getUint8, data.getUint16 or even
-	// TextDecoder to process raw data bytes.
-	for (let i = 0; i < value.byteLength; i++) {
-		a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
-	}
-	log('> ' + a.join(' '));
+	log(`> ${value.getUint16(0).toString(10)}`);
 }

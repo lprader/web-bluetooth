@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
   <head>
     <meta charset="utf-8">
-    <title>Web Bluetooth - HRM</title>
+    <title>Web Bluetooth</title>
   </head>
-
   <body>
     <h1>HRM</h1>
+
+    <!-- Error messages appear here if user isn't using Chrome/doesn't have Web Bluetooth enabled -->
+    <div id="error"></div>
 
     <form>
       <button id="startNotifications">Start notifications</button>
@@ -18,51 +19,12 @@
       <canvas id="line-chart"></canvas>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script>
-      let chart = new Chart(document.getElementById("line-chart"), {
-        type: 'line',
-        data: {
-          labels: [],
-          datasets: [{ 
-              data: [],
-              label: "BPM",
-              borderColor: "#3e95cd",
-              fill: false
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          animation: {
-              duration: 0,
-          },
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      max: 80,
-                      min: 40,
-                      stepSize: 5
-                  }
-              }],
-          },
-        }
-      });
-
-      let index = 0;
-      function addData(data) {
-        let label = index++;
-          chart.data.labels.push(label);
-          if (index > 10) chart.data.labels.shift();
-          chart.data.datasets.forEach((dataset) => {
-              dataset.data.push(data);
-              if (index > 10) dataset.data.shift();
-          });
-          chart.update();
-      }
-    </script>
-
     <script type="text/javascript" src="ble.js"></script>
+    <!-- Check that user is using Chrome and Web Bluetooth is enabled -->
+    <script type="text/javascript" src="../check.js"></script>
+    <!-- Chart scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="chart.js"></script>
   </body>
 
 </html>
