@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Web Bluetooth</title>
+	</head>
+	<body>
+		<h1>Health Thermometer</h1>
+
+		<!-- Error messages appear here if user isn't using Chrome/doesn't have Web Bluetooth enabled -->
+		<div id="error"></div>
+		
+		<form>
+			<button id="startNotifications">Start notifications</button>
+			<button id="stopNotifications">Stop notifications</button>
+		</form>
+
+		<!-- Log -->
+		<h3>Live Output</h3>
+		<div id="output" class="output">
+			<div id="content"></div>
+			<div id="status"></div>
+			<pre id="log"></pre>
+		</div>
+
+		<script type="text/javascript" src="ble.js"></script>
+		<!-- Check that user is using Chrome and Web Bluetooth is enabled -->
+		<script type="text/javascript" src="../check.js"></script>
+		<!-- Log scripts -->
+		<script type="text/javascript" src="../logger.js"></script>
+	</body>
+</html>
