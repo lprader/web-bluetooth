@@ -6,3 +6,4 @@
 - [Basic HRM + battery level](https://lprader.github.io/web-bluetooth/hrm-battery/index.html)
 - [HRM with Chart.js](https://lprader.github.io/web-bluetooth/hrm-chart/index.html)
 - [Basic health thermometer](https://lprader.github.io/web-bluetooth/health-thermometer/index.html)
+- [Wi-Fi Connection](https://lprader.github.io/web-bluetooth/wifi-connection/index.html)
