@@ -50,17 +50,18 @@ function onConnectButtonClick() {
 		return device.gatt.connect();
 	})
   	.then(server => {
-		log('Getting Services...');
+  		log('Connected.')
+		// log('Getting Services...');
 		return server.getPrimaryServices();
   	})
   	.then(services => {
-		log('Getting Characteristics...');
+		// log('Getting Characteristics...');
 		let queue = Promise.resolve();
 		services.forEach(service => {
 		  queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
-			log('> Service: ' + service.uuid);
+			// log('> Service: ' + service.uuid);
 			characteristics.forEach(characteristic => {
-				log('>> Characteristic: ' + characteristic.uuid + ' ' + getSupportedProperties(characteristic));
+				// log('>> Characteristic: ' + characteristic.uuid + ' ' + getSupportedProperties(characteristic));
 				if (characteristic.uuid.indexOf(hrmCharacteristicUuid.toString(16)) > -1) {
 					hrmCharacteristic = characteristic;
 				}
