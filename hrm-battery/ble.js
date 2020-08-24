@@ -2,25 +2,30 @@
 /* https://github.com/GoogleChrome/samples/blob/gh-pages/web-bluetooth/notifications.js */
 /* https://googlechrome.github.io/samples/web-bluetooth/discover-services-and-characteristics.html?optionalServices=0x180F */
 
-document.querySelector('#connect').addEventListener('click', function(event) {
+var connectButton = document.querySelector('#connect');
+var startNotificationsButton = document.querySelector('#startNotifications');
+var stopNotificationsButton = document.querySelector('#stopNotifications');
+var readBatteryLevelButton = document.querySelector('#readBatteryLevel');
+
+connectButton.addEventListener('click', function(event) {
 	event.stopPropagation();
 	event.preventDefault();
 	onConnectButtonClick();
 });
 
-document.querySelector('#startNotifications').addEventListener('click', function(event) {
+startNotificationsButton.addEventListener('click', function(event) {
 	event.stopPropagation();
 	event.preventDefault();
 	onStartButtonClick();
 });
 
-document.querySelector('#stopNotifications').addEventListener('click', function(event) {
+stopNotificationsButton.addEventListener('click', function(event) {
 	event.stopPropagation();
 	event.preventDefault();
 	onStopButtonClick();
 });
 
-document.querySelector('#readBatteryLevel').addEventListener('click', function(event) {
+readBatteryLevelButton.addEventListener('click', function(event) {
 	event.stopPropagation();
 	event.preventDefault();
 	onBatteryButtonClick();
@@ -43,6 +48,8 @@ function getSupportedProperties(characteristic) {
 }
 
 function onConnectButtonClick() {
+	connectButton.disabled = true;
+
 	log('Requesting Bluetooth Device...');
 	navigator.bluetooth.requestDevice({filters: [{services: [hrmServiceUuid, batteryServiceUuid]}]})
 	.then(device => {
@@ -76,6 +83,8 @@ function onConnectButtonClick() {
 	.catch(error => {
 		log('Argh! ' + error);
 	});
+	readBatteryLevelButton.disabled = false;
+	startNotificationsButton.disabled = false;
 }
 
 function onStartButtonClick() {
@@ -89,6 +98,8 @@ function onStartButtonClick() {
 	.catch(error => {
 		log('Argh! ' + error);
 	});
+	startNotificationsButton.disabled = true;
+	stopNotificationsButton.disabled = false;
 }
 
 function onStopButtonClick() {
@@ -102,6 +113,8 @@ function onStopButtonClick() {
 	.catch(error => {
 		log('Argh! ' + error);
 	});
+	startNotificationsButton.disabled = false;
+	stopNotificationsButton.disabled = true;
 }
 
 function onBatteryButtonClick() {
