@@ -9,6 +9,14 @@
 
 		<!-- Error messages appear here if user isn't using Chrome/doesn't have Web Bluetooth enabled -->
 		<div id="error"></div>
+
+		<p>A companion to the <a href="https://github.com/Moddable-OpenSource/moddable/tree/public/examples/network/ble/health-thermometer-server">health-thermometer-server example</a>. Receives notifications for the Health Thermometer service and prints them in the console below.</p>
+		<p>To use:</p>
+		<ol>
+			<li>Run the health-thermometer-server example on a device</li>
+			<li>Click the "Start Notifications" button below</li>
+			<li>Select the device named "Moddable HTM" from the popup</li>
+		</ol>
 		
 		<form>
 			<button id="startNotifications">Start notifications</button>
@@ -16,7 +24,7 @@
 		</form>
 
 		<!-- Log -->
-		<h3>Live Output</h3>
+		<h3>Console</h3>
 		<div id="output" class="output">
 			<div id="content"></div>
 			<div id="status"></div>

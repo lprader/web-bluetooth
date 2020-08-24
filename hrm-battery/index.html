@@ -9,6 +9,15 @@
 
 		<!-- Error messages appear here if user isn't using Chrome/doesn't have Web Bluetooth enabled -->
 		<div id="error"></div>
+
+		<p>A companion to the <a href="https://github.com/Moddable-OpenSource/moddable/tree/public/examples/network/ble/heart-rate-server">heart-rate-server example</a>. Allows you to receive notifications for the Heart Rate characteristic and read the Battery Level characteristic and prints values in the console below.</p>
+		<p>To use:</p>
+		<ol>
+			<li>Run the heart-rate-server example on a device</li>
+			<li>Click the "Connect" button below</li>
+			<li>Select the device named "Moddable HRM" from the popup</li>
+			<li>Receive notifications for the Heart Rate characteristic by clicking the "Start notifications" button below; read the Battery Level characteristic by clicking the "Read battery level" button
+		</ol>
 		
 		<form>
 			<button id="connect">Connect</button>
@@ -18,7 +27,7 @@
 		</form>
 
 		<!-- Log -->
-		<h3>Live Output</h3>
+		<h3>Console</h3>
 		<div id="output" class="output">
 			<div id="content"></div>
 			<div id="status"></div>

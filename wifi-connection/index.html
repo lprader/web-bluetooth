@@ -9,6 +9,15 @@
 
 		<!-- Error messages appear here if user isn't using Chrome/doesn't have Web Bluetooth enabled -->
 		<div id="error"></div>
+
+		<p>A companion to the <a href="https://github.com/Moddable-OpenSource/moddable/tree/public/examples/network/ble/wifi-connection-server">wifi-connection-server example</a>. Receives notifications for the Heart Rate service and prints them in the console below.</p>
+		<p>To use:</p>
+		<ol>
+			<li>Run the wifi-connection-server example on a device</li>
+			<li>Enter your Wi-Fi SSID and password in the forms below</li>
+			<li>Click the "Connect" button below</li>
+			<li>Select the device named "Moddable Device" from the popup</li>
+		</ol>
 		
 		<form>
 			<input id="ssid" type="text" placeholder="SSID">
@@ -17,7 +26,7 @@
 		</form>
 
 		<!-- Log -->
-		<h3>Live Output</h3>
+		<h3>Console</h3>
 		<div id="output" class="output">
 			<div id="content"></div>
 			<div id="status"></div>
