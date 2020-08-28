@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Heart Rate Monitor Client</title>
+
+    <!-- Bootstrap CSSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <style>
+      #heartrate {
+        background-image: url("./assets/heart.png");
+        height: 167px;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 50px;
+        text-align: center;
+      }
+
+      #error {
+        padding: 1em 1em 1em 1em;
+        display: none;
+      }
+
+      .col-md-4 {
+        padding: 1em 1em 1em 1em;
+        outline: 1px solid #d0d0d0;
+        outline-offset: -0.5em;
+      }
+    </style>
+
+  </head>
+  <body>
+    <center>
+    <div class="container-fluid">
+        <BR><BR>
+        <h1>Heart Rate Monitor Client</h1>
+        <img src="./assets/icon.png">
+      <!-- Error messages appear here if user isn't using Chrome/doesn't have Web Bluetooth enabled -->
+      <div id="error" class="bg-warning"></div>
+
+
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Step 1</h2>
+          <p>Run the <a href="https://github.com/Moddable-OpenSource/moddable/tree/public/examples/network/ble/heart-rate-server"><code>heart-rate-server</code> example</a> on a device</p>
+        </div>
+        <div class="col-md-4">
+          <h2>Step 2</h2>
+          <p>Click the <strong>Connect</strong> button below and pair with the device named <strong>Moddable HRM</strong></p>
+          <form>
+            <button type="button" class="btn btn-primary btn-lg" id="connect">Connect</button>
+          </form>
+        </div>
+        <div class="col-md-4">
+          <h2>Step 3</h2>
+          <p>View heart rate readings</p>
+          <div id="heartrate"></div>
+        </div>
+      </div>
+      <script type="text/javascript" src="ble.js"></script>
+      <!-- Check that user is using Chrome and Web Bluetooth is enabled -->
+      <script type="text/javascript" src="../check.js"></script>
+    </div>
+  </body>
+
+</html>
+
